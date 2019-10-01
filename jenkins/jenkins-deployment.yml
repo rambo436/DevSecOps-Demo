@@ -14,12 +14,13 @@ spec:
         component: jenkins
         role: cicd
     spec:
+      volumes:
+        - name: jenkins-home
+          persistentVolumeClaim:
+            claimName: jenkins-persistent-volume-claim
       containers:
         - name: jenkins
           image: moonrake/moonrake-jenkins:latest
-          env:
-            - name: JAVA_OPTS
-              value: -Djenkins.install.runSetupWizard=false
           ports:
             - name: http-port
               containerPort: 8080
@@ -28,6 +29,6 @@ spec:
           volumeMounts:
             - name: jenkins-home
               mountPath: /var/jenkins_home
-      volumes:
-        - name: jenkins-home
-          emptyDir: {}
+          env:
+            - name: JAVA_OPTS
+              value: -Djenkins.install.runSetupWizard=false
