@@ -46,7 +46,7 @@ resource "aws_security_group" "moonrake-demo-cluster" {
 
   tags = "${
     map(
-      "Name" = "${var.cluster-name}-sg"
+      "Name", "${var.cluster-name}-sg",
       "Company", "Moonrake",
       "Environment", "${var.environment}",
     )
@@ -59,9 +59,17 @@ resource "aws_security_group" "moonrake-demo-cluster-ingress-node-https" {
   from_port                = 443
   protocol                 = "tcp"
   security_group_id        = "${aws_security_group.moonrake-demo-cluster.id}"
-  source_security_group_id = "${aws_security_group.moonrake-demo-node.id}" # TODO: Name node sg moonrake-demo-node.
+  source_security_group_id = "${aws_security_group.moonrake-demo-node.id}" # NOTE: Name node sg moonrake-demo-node.
   to_port                  = 443
   type                     = "ingress"
+
+  tags = "${
+    map(
+      "Name", "${var.cluster-name}-sg",
+      "Company", "Moonrake",
+      "Environment", "${var.environment}",
+    )
+  }"
 }
 
 # Creating

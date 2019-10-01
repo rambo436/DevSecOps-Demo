@@ -38,7 +38,7 @@ resource "aws_internet_gateway" "moonrake_demo" {
 
   tags = "${
     map(
-      "Name" = "moonrake-eks-demo-ig"
+      "Name", "moonrake-eks-demo-ig",
       "Company", "Moonrake",
       "Environment", "${var.environment}",
     )
@@ -58,7 +58,7 @@ resource "aws_route_table" "moonrake_demo" {
 
   tags = "${
     map(
-      "Name" = "moonrake-eks-demo-rt"
+      "Name", "moonrake-eks-demo-rt",
       "Company", "Moonrake",
       "Environment", "${var.environment}",
     )
