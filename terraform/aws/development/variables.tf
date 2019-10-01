@@ -7,3 +7,7 @@ variable "aws_region" {
 variable "cluster-name" {
   default = "moonrake-demo"
 }
+
+variable "environment" {
+  default = "development"
+}
