@@ -7,6 +7,7 @@ resource "aws_vpc" "moonrake_demo" {
   tags = "${
     map(
       "Name", "moonrake-eks-demo-vpc",
+      "Company", "Moonrake",
       "kubernetes.io/cluster/${var.cluster-name}", "shared",
     )
   }"
@@ -23,6 +24,7 @@ resource "aws_subnet" "moonrake_demo" {
   tags = "${
     map(
       "Name", "moonrake-eks-demo-subnet",
+      "Company", "Moonrake",
       "kubernetes.io/cluster/${var.cluster-name}", "shared",
     )
   }"
@@ -32,7 +34,10 @@ resource "aws_subnet" "moonrake_demo" {
 resource "aws_internet_gateway" "moonrake_demo" {
   vpc_id = "${aws_vpc.moonrake_demo.id}"
 
-  tags = {
-    Name = "moonrake-eks-demo-ig"
-  }
+  tags = "${
+    map(
+      "Name" = "moonrake-eks-demo-ig"
+      "Company", "Moonrake",
+    )
+  }"
 }
