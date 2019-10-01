@@ -8,6 +8,7 @@ resource "aws_vpc" "moonrake_demo" {
     map(
       "Name", "moonrake-eks-demo-vpc",
       "Company", "Moonrake",
+      "Environment", "development",
       "kubernetes.io/cluster/${var.cluster-name}", "shared",
     )
   }"
@@ -25,6 +26,7 @@ resource "aws_subnet" "moonrake_demo" {
     map(
       "Name", "moonrake-eks-demo-subnet",
       "Company", "Moonrake",
+      "Environment", "development",
       "kubernetes.io/cluster/${var.cluster-name}", "shared",
     )
   }"
@@ -38,6 +40,7 @@ resource "aws_internet_gateway" "moonrake_demo" {
     map(
       "Name" = "moonrake-eks-demo-ig"
       "Company", "Moonrake",
+      "Environment", "development",
     )
   }"
 }
@@ -46,4 +49,12 @@ resource "aws_route_table" "moonrake_demo" {
   count = 3
   subnet_id = "${aws_subnet.moonrake_demo.*.id[count.index]}"
   route_table_id = "${aws_route_table.moonrake_demo.id}"
+
+  tags = "${
+    map(
+      "Name" = "moonrake-eks-demo-rt"
+      "Company", "Moonrake",
+      "Environment", "development",
+    )
+  }"
 }
