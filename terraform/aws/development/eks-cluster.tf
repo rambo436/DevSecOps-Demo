@@ -30,3 +30,25 @@ resource "aws_iam_role_policy_attachment" "moonrake-demo-cluster-AmazonEKSServic
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = "${aws_iam_role.moonrake-demo-cluster.name}"
 }
+
+# Creating AWS Security Group to moonrake-eks-demo-cluster
+resource "aws_security_group" "moonrake-demo-cluster" {
+  name = "${aws_iam_role.moonrake-demo-cluster.name}"
+  description = "Allows cluster connectivity to worker nodes."
+  vpc_id = "${aws_vpc.moonrake_demo.id}"
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = "${
+    map(
+      "Name" = "${var.cluster-name}-sg"
+      "Company", "Moonrake",
+      "Environment", "${var.environment}",
+    )
+  }"
+}
