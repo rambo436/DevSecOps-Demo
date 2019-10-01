@@ -41,3 +41,9 @@ resource "aws_internet_gateway" "moonrake_demo" {
     )
   }"
 }
+
+resource "aws_route_table" "moonrake_demo" {
+  count = 3
+  subnet_id = "${aws_subnet.moonrake_demo.*.id[count.index]}"
+  route_table_id = "${aws_route_table.moonrake_demo.id}"
+}
