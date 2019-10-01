@@ -64,3 +64,11 @@ resource "aws_route_table" "moonrake_demo" {
     )
   }"
 }
+
+# Connecting subnets to routing table.
+resource "aws_route_table_association" "moonrake_demo" {
+  count = 3
+
+  subnet_id      = "${aws_subnet.moonrake_demo.*.id[count.index]}"
+  route_table_id = "${aws_route_table.moonrake_demo.id}"
+}
