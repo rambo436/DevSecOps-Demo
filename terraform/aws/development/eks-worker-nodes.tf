@@ -97,3 +97,16 @@ data "aws_ami" "moonrake-eks-worker" {
   most_recent = true
   owners      = [""] # TODO: Get Amazon EKS AMI Account ID (might be 602401143452)
 }
+
+# EKS currently documents this required userdata for EKS worker nodes to
+# properly configure Kubernetes applications on the EC2 instance.
+# We utilize a Terraform local here to simplify Base64 encoding this
+# information into the AutoScaling Launch Configuration.
+# More information: https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
+locals {
+  demo-node-userdata = <<USERDATA
+#!/bin/bash
+set -o xtrace
+/etc/eks/bootstrap.sh --apiserver-endpoint '${aws_eks_cluster.moonrake_demo.endpoint}' --b64-cluster-ca '${aws_eks_cluster.moonrake_demo.certificate_authority.0.data}' '${var.cluster-name}'
+USERDATA
+}
