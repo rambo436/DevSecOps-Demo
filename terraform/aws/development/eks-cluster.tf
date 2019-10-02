@@ -65,7 +65,7 @@ resource "aws_security_group_rule" "moonrake-demo-cluster-ingress-node-https" {
 }
 
 resource "aws_security_group_rule" "moonrake-demo-cluster-ingress-workstation-https" {
-  cidr_blocks       = ["${local.workstation-external-cidr}"]
+  cidr_blocks       = ["${local.workstation-external-cidr}"] # TODO: Create locals terraform file.
   description       = "Allow workstation to communicate with the cluster API Server"
   from_port         = 443
   protocol          = "tcp"
@@ -77,7 +77,7 @@ resource "aws_security_group_rule" "moonrake-demo-cluster-ingress-workstation-ht
 # Creating EKS cluster.
 resource "aws_eks_cluster" "moonake_demo" {
   name     = "${var.cluster-name}"
-  role_arn = "${aws_iam_role.demo-cluster.arn}"
+  role_arn = "${aws_iam_role.moonrake-demo-cluster.arn}"
 
   vpc_config {
     security_group_ids = ["${aws_security_group.moonrake-demo-cluster.id}"]

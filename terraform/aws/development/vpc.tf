@@ -47,9 +47,7 @@ resource "aws_internet_gateway" "moonrake_demo" {
 
 # Enabling open-world internet access to internate gateway via routing table.
 resource "aws_route_table" "moonrake_demo" {
-  count = 3
-  subnet_id = "${aws_subnet.moonrake_demo.*.id[count.index]}"
-  route_table_id = "${aws_route_table.moonrake_demo.id}"
+  vpc_id = "${aws_vpc.moonrake_demo.id}"
 
   route {
     cidr_block = "0.0.0.0/0"
