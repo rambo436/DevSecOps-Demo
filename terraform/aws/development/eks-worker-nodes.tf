@@ -104,9 +104,24 @@ data "aws_ami" "moonrake-eks-worker" {
 # information into the AutoScaling Launch Configuration.
 # More information: https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
 locals {
-  demo-node-userdata = <<USERDATA
+  moonrake-demo-node-userdata = <<USERDATA
 #!/bin/bash
 set -o xtrace
 /etc/eks/bootstrap.sh --apiserver-endpoint '${aws_eks_cluster.moonrake_demo.endpoint}' --b64-cluster-ca '${aws_eks_cluster.moonrake_demo.certificate_authority.0.data}' '${var.cluster-name}'
 USERDATA
+}
+
+# Configuring launch configuration.
+resource "aws_launch_configuration" "moonrake_demo" {
+  associate_public_ip_address = true
+  iam_instance_profile        = "${aws_iam_instance_profile.moonrake-demo-node.name}"
+  image_id                    = "${data.aws_ami.moonrake-eks-worker.id}"
+  instance_type               = "m4.large"
+  name_prefix                 = "moonrake-eks-demo"
+  security_groups             = ["${aws_security_group.moonrake-demo-node.id}"]
+  user_data_base64            = "${base64encode(local.moonrake-demo-node-userdata)}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
