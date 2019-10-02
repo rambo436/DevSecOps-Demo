@@ -37,3 +37,9 @@ resource "aws_iam_role_policy_attachment" "moonrake-demo-node-AmazonEC2Container
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = "${aws_iam_role.moonrake-demo-node.name}"
 }
+
+# Providing an AWS IAM instance profile
+resource "aws_iam_instance_profile" "moonrake-demo-node" {
+  name = "moonrake-eks-demo"
+  role = "${aws_iam_role.moonrake-demo-node.name}"
+}
