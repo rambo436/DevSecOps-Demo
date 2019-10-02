@@ -95,5 +95,5 @@ data "aws_ami" "moonrake-eks-worker" {
   }
 
   most_recent = true
-  owners      = [""] # TODO: Get Amazon EKS AMI Account ID
+  owners      = [""] # TODO: Get Amazon EKS AMI Account ID (might be 602401143452)
 }
