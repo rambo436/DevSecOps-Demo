@@ -125,3 +125,26 @@ resource "aws_launch_configuration" "moonrake_demo" {
     create_before_destroy = true
   }
 }
+
+# Creating autoscaling group
+resource "aws_autoscaling_group" "moonrake_demo" {
+  desired_capacity     = 2
+  launch_configuration = "${aws_launch_configuration.moonrake_demo.id}"
+  max_size             = 2
+  min_size             = 1
+  name                 = "moonrake-eks-demo"
+  vpc_zone_identifier  = "${aws_subnet.moonrake_demo[*].id}"
+
+  tag {
+    key                 = "Name"
+    value               = "moonrake-eks-demo"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "kubernetes.io/cluster/${var.cluster-name}"
+    value               = "owned"
+    Company             = "Moonrake"
+    propagate_at_launch = true
+  }
+}
