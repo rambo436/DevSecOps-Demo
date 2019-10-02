@@ -87,3 +87,13 @@ resource "aws_security_group_rule" "moonrake-demo-node-ingress-cluster" {
   to_port                  = 65535
   type                     = "ingress"
 }
+
+data "aws_ami" "moonrake-eks-worker" {
+  filter {
+    name   = "name"
+    values = ["amazon-eks-node-${aws_eks_cluster.moonrake_demo.version}-v*"]
+  }
+
+  most_recent = true
+  owners      = [""] # TODO: Get Amazon EKS AMI Account ID
+}
