@@ -54,7 +54,7 @@ resource "aws_security_group" "moonrake-demo-cluster" {
 }
 
 # Creating AWS Security Group to allow HTTPS communication over port 443
-resource "aws_security_group" "moonrake-demo-cluster-ingress-node-https" {
+resource "aws_security_group_rule" "moonrake-demo-cluster-ingress-node-https" {
   description              = "Allow pods to communicate with the cluster API Server"
   from_port                = 443
   protocol                 = "tcp"
@@ -62,14 +62,16 @@ resource "aws_security_group" "moonrake-demo-cluster-ingress-node-https" {
   source_security_group_id = "${aws_security_group.moonrake-demo-node.id}"
   to_port                  = 443
   type                     = "ingress"
+}
 
-  tags = "${
-    map(
-      "Name", "${var.cluster-name}-sg",
-      "Company", "Moonrake",
-      "Environment", "${var.environment}",
-    )
-  }"
+resource "aws_security_group_rule" "moonrake-demo-cluster-ingress-workstation-https" {
+  cidr_blocks       = ["${local.workstation-external-cidr}"]
+  description       = "Allow workstation to communicate with the cluster API Server"
+  from_port         = 443
+  protocol          = "tcp"
+  security_group_id = "${aws_security_group.moonrake-demo-cluster.id}"
+  to_port           = 443
+  type              = "ingress"
 }
 
 # Creating EKS cluster.
