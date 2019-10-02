@@ -74,7 +74,7 @@ resource "aws_security_group_rule" "moonrake-demo-cluster-ingress-workstation-ht
   type              = "ingress"
 }
 
-resource "aws_eks_cluster" "moonake_demo" {
+resource "aws_eks_cluster" "moonrake_demo" {
   name     = "${var.cluster-name}"
   role_arn = "${aws_iam_role.moonrake-demo-cluster.arn}"
 
