@@ -136,6 +136,12 @@ resource "aws_autoscaling_group" "moonrake_demo" {
   vpc_zone_identifier  = "${aws_subnet.moonrake_demo[*].id}"
 
   tag {
+    key                 = "Company"
+    value               = "Moonrake"
+    propagate_at_launch = true
+  }
+
+  tag {
     key                 = "Name"
     value               = "moonrake-eks-demo"
     propagate_at_launch = true
@@ -144,7 +150,6 @@ resource "aws_autoscaling_group" "moonrake_demo" {
   tag {
     key                 = "kubernetes.io/cluster/${var.cluster-name}"
     value               = "owned"
-    Company             = "Moonrake"
     propagate_at_launch = true
   }
 }
