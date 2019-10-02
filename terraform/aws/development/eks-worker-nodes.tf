@@ -59,9 +59,9 @@ resource "aws_security_group" "moonrake-demo-node" {
 
   tags = "${
     map(
-     "Name", "moonrake-eks-demo-node-sg",
-     "Company", "Moonrake",
-     "kubernetes.io/cluster/${var.cluster-name}", "owned",
+      "Name", "moonrake-eks-demo-node-sg",
+      "Company", "Moonrake",
+      "kubernetes.io/cluster/${var.cluster-name}", "owned",
     )
   }"
 }
@@ -95,7 +95,7 @@ data "aws_ami" "moonrake-eks-worker" {
   }
 
   most_recent = true
-  owners      = [""] # TODO: Get Amazon EKS AMI Account ID (might be 602401143452)
+  owners      = ["602401143452"] # TODO: Get Amazon EKS AMI Account ID (might be 602401143452)
 }
 
 # EKS currently documents this required userdata for EKS worker nodes to
