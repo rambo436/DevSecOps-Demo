@@ -1,0 +1,3 @@
+[submodule "kube/k8s-demo"]
+	path = kube/k8s-demo
+	url = git@github.com:kaiprt/k8s-demo.git
