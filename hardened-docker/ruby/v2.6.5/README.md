@@ -12,7 +12,7 @@ This package includes Ruby Versrion 2.6.5. This container is still a work in pro
    `./demo-bootstrap.sh
 3. Run the image with `docker run -it moonrake-docker-ruby:demo`
 
-4. You can exit out of the image by typeing `exit` then press the return key.
+4. You can exit out of the image by typing `exit` then press the return key.
 
 # Previous Commit Log from DSOP/dccscr repository:
 commit 469269c30c4053bb1a6e9662b02b72b57e6d7746 (HEAD -> feature/ruby)
