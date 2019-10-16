@@ -8,7 +8,11 @@ This package includes Ruby Versrion 2.6.5. This container is still a work in pro
 # Building the image
 1. In a terminal, navigate to the ruby 2.6.5 working directory (DevSecOps-Demo/hardened-docker/ruby/v2.6.5)
    Example: `cd ~/DevSecOps-Demo/hardened-docker/ruby/v2.6.5/`
-2. Execute the bootstrap.sh to download artifacts and build/tag the docker image.
+2. Execute the demo-bootstrap.sh from the working directory to download artifacts and build/tag the docker image.
+   `./demo-bootstrap.sh
+3. Run the image with `docker run -it moonrake-docker-ruby:demo`
+
+4. You can exit out of the image by typeing `exit` then press the return key.
 
 # Previous Commit Log from DSOP/dccscr repository:
 commit 469269c30c4053bb1a6e9662b02b72b57e6d7746 (HEAD -> feature/ruby)
