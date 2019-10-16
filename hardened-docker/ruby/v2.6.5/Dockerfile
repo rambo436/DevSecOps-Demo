@@ -14,7 +14,7 @@ COPY ./src/ /src
 ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 RUN mkdir -p /build_output && \
-    tar -x -v -C /build_output/ -f /src/ruby-2.6.5.tar
+    tar -z -x -v -C /build_output/ -f /src/ruby-2.6.5.tar.gz
 
 
 FROM registry.access.redhat.com/ubi7/ubi as ruby-final
