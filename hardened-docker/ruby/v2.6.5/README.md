@@ -14,6 +14,9 @@ This package includes Ruby Versrion 2.6.5. This container is still a work in pro
 
 4. You can exit out of the image by typeing `exit` then press the return key.
 
+# Note from the maintainer
+- This image DOES NOT persist data by default. Instructions will be provided at a later date if this is desired.
+
 # Previous Commit Log from DSOP/dccscr repository:
 commit 469269c30c4053bb1a6e9662b02b72b57e6d7746 (HEAD -> feature/ruby)
 Author: Kai Prout <kai@moonrake.it>
