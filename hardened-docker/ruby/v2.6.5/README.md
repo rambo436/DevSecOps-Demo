@@ -1,11 +1,14 @@
 # opensource ruby ruby
 
-TODO Describe this image here
+This is hardened docker image built specifically to be made as a contribution to the DSOP/dccscr project found [here](https://dccscr.dsop.io/dsop/dccscr).
+
 # v2.6.5
+This package includes Ruby Versrion 2.6.5. This container is still a work in progress and will be submitted for review in a few days.
 
-TODO Describe this image here
-
-
+# Building the image
+1. In a terminal, navigate to the ruby 2.6.5 working directory (DevSecOps-Demo/hardened-docker/ruby/v2.6.5)
+   Example: `cd ~/DevSecOps-Demo/hardened-docker/ruby/v2.6.5/`
+2. Execute the bootstrap.sh to download artifacts and build/tag the docker image.
 
 # Previous Commit Log from DSOP/dccscr repository:
 commit 469269c30c4053bb1a6e9662b02b72b57e6d7746 (HEAD -> feature/ruby)
