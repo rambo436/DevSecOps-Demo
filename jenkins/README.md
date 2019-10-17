@@ -1,4 +1,4 @@
-### Jenkins DevSec Ops Demo
+### Jenkins DevSecOps Demo
 
 ## Purpose
 To establish a consistent and automated way to build, package, and test applications as well as automate delivery of applications
