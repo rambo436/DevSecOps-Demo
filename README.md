@@ -1,4 +1,3 @@
-![Moonrake Logo](https://avatars1.githubusercontent.com/u/56047763?s=400&u=7c7fbdbee5ea77181beb5783099b77e4bf02a587&v=4)
 # DevSecOps-Demo
 This repository is used as an open source demonstration of Moonrake's DevSecOps capabilities. This is a continuous work in progress and subject to change daily.
 
