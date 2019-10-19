@@ -8,6 +8,6 @@ Issues can be tracked in the (issues tab)[https://github.com/MoonrakeOpen/DevSec
 We are using a combination of the forking strategy which is common among open-source projects in combination with the GitFlow workflow.
 
 ## Git Strategy Diagram
-![gitflow diagram]https://miro.medium.com/max/2432/1*RdfreU6QIY6fyBNTITwzSw.png "Git Flow Diagram Image")
+![gitflow diagram](https://miro.medium.com/max/2432/1*RdfreU6QIY6fyBNTITwzSw.png)
 
 ## Note: This is a continuous work in progress and subject to change daily.
