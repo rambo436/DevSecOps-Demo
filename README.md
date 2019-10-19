@@ -18,3 +18,6 @@ The most critical component are the docker configurations. Each docker file is h
 
 ### Kube 
 This is the section that holds our Kubernetes (k8s) demo's. This currently holds a submodule of a project we build to be deployed to google cloud through TravisCI you can view the repo [here](https://github.com/kaiprt/k8s-demo) and the TravisCI project [here](https://travis-ci.org/kaiprt/k8s-demo).
+
+#### K8S Security
+We are actively integrating Istio (sidecar service mesh) into our demonstrations. The goal is to replace a single piece of functionality per day with an Istio equivalent.
